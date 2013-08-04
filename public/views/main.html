@@ -1,0 +1,57 @@
+
+<div class="hero-unit">
+  <div ng-controller="SearchResultListCtrl">
+    <h2> FIT - Search</h2>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <!--Sidebar content-->
+          <form ng-submit="search()">
+           <span >
+            <i class="icon-search"></i><strong>Search:</strong>
+          </span>  <input class="input-xlarge" type="text" placeholder="Search Your files in the Cloud" ng-model="query" autofocus>
+          <button ng-click="search()" class="btn" type="button" type="submit" id="submit" >Search</button>
+        </form>
+      </div>
+      <div class="span12">
+        <!--Body content-->
+        <ul >
+          <li ng-repeat="result in results">
+            <i class="icon-dropbox"></i>
+            <span ng-bind-html-unsafe="result.fields.file_meta.name | autocompleteHighlight:query"></span> 
+            <span style="float:right" ng-bind-html-unsafe="result.fields.file_meta.isFolder | isFolderFilter"></span>
+            <div ng-include src="result | fileTypeTemplateFilter" ng-model="fileTypeResult">
+
+            </div>
+            <div>
+             <span ng-bind-html-unsafe="result | fileTypeFilter"></span>
+           </div>
+           <div >
+            <a ng-href="/get/{{ result | previewPath}}" target="_blank">Web Preview<span ng-bind-html-unsafe="result.fields.file_meta.path | autocompleteHighlight:query"></span> </a>
+
+            <a ng-href="/get/{{ result | downloadPath}}" target="_blank">Download<span ng-bind-html-unsafe="result.fields.file_meta.path | autocompleteHighlight:query"></span> </a>
+
+          </div>
+
+          - {{result._score}}
+          <p>{{result.fields.file_meta._content_type}}</p>
+
+          <a ng-click="findDuplicated()"  type="button" >     More like This</a>
+
+          <a ng-click="findDuplicated($index,result)"  type="button" >Duplicated</a>
+          <em>Duplicated:</em>
+          <ul ng-show="result.duplicated">
+            <li ng-repeat="duplicate in result.duplicated | limitTo:2">{{duplicate}}</li>
+
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+

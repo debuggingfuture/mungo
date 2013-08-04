@@ -1,0 +1,16 @@
+{
+	"redisOptions":{
+		"host": "localhost",
+		"port": 6379
+		},
+		"services":{
+			"dropbox":
+			{"token":
+			{ "key": "vncp1c3qcevdabo",
+			"secret": "q69itpwk4gvgcv2",
+			"token": "UEi2BGQwIWoAAAAAAAAAAeGy4NF9bkZv0Bhxz2gn_cHu-hIzN8cMUaMHDoQCmO03",
+			"uid": "192371987" }
+		}
+	},
+	"authProviders":["google","github"]
+}

@@ -2,26 +2,31 @@
 
 <div class="hero-unit">
   <div  ng-controller="SearchResultListCtrl">
-    <h2>Mungo</h2>
-    <h3>Your modern marketplace</h3>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-          <!--Sidebar content-->
-          <form ng-submit="search()">
-           <span >
-            <i class="icon-search"></i><strong>Search:</strong>
-          </span>  <input class="input-xlarge" type="text" placeholder="Search Your files in the Cloud" ng-model="query" ng-change="search()" autofocus>
-          <button ng-click="search()" class="btn" type="button" type="submit" id="submit" >Search</button>
-        </form>
-      </div>
-      <div   class="span12">
-        <div ng-init="getSearchResultFacet()" >
-          <span  ><span ng-show="onTypeFilter" class="badge badge-important">Filter ON : {{typeFilter}}</span></span>
-          <div>Popular Type:</div>
-          <div style="height:100px">
-            <fs-bar bind="facetResultFacet" duration='700' align='left' height='100' width='500' on-click="filterSearchByType" />
-          </div>
+    <!-- <h2>Mungo</h2> -->
+  <div class="container-fluid">
+
+    <div class="row-fluid">
+      <div class="span12">
+        <img  style="text-align:center;display: block;
+        margin-left: auto;
+        margin-right: auto;" src="https://trello-attachments.s3.amazonaws.com/5273ee43d6875b200d00bee2/5275f123378a07bd7300f0b7/c626a7aa797aa9ca7913013583a380f9/mungo.png"></div>
+        <div>
+          <div class="span12" >
+            <h4 style="text-align:center;">Your Visual, Social, Local Marketplace</h4></div>
+            <!--Sidebar content-->
+            <form ng-submit="search()">
+             <span >
+              <i class="icon-search"></i><strong>Search:</strong>
+            </span>  <input class="input-xlarge" type="text" placeholder="Search Your files in the Cloud" ng-model="query" ng-change="search()" autofocus>
+            <button ng-click="search()" class="btn" type="button" type="submit" id="submit" >Search</button>
+          </form>
+        </div>
+        <div   class="span12">
+          <div ng-init="getSearchResultFacet()" >
+            <span  ><span ng-show="onTypeFilter" class="badge badge-important">Filter ON : {{typeFilter}}</span></span>
+            <div style="height:100px">
+              <fs-bar bind="facetResultFacet" duration='700' align='left' height='100' width='500' on-click="filterSearchByType" />
+            </div>
         <!-- ng-animate="'animate'" --><!-- 
         <span  ng-repeat="aTerm in facetResult"> <span class="badge badge-info">{{aTerm.term}}:{{aTerm.count}} </span></span> -->
         <!--Body content-->
@@ -34,16 +39,19 @@
             <img class="like" src="https://cdn2.iconfinder.com/data/icons/linecons/32/like-128.png">
             <span ng-bind-html-unsafe="result.fields.title | autocompleteHighlight:query"></span> 
             <!-- <span style="float:right" ng-bind-html-unsafe="result.fields.file_meta.isFolder | isFolderFilter"></span> -->
-              <div class="span12 image-meta" style="height:64px;">
-                <div>{{result.fields.title}}</div>
-                <!-- 64 for image height -->
-                <span class="span6">
-                  <img ng-src="{{getImage(result).image_url}}">
-                </span>
-            <div>
-             <span ng-bind-html-unsafe="result | fileTypeFilter"></span>
-           </div>
-           <div >
+
+
+            <img class="item-image" ng-src="{{getImage(result).fields.image_url}}">
+            <div class="span12 image-meta" style="height:64px;">
+              <div>{{result.fields.title}}</div>
+              <div>{{result.fields.locationArea}}</div>
+              <!-- 64 for image height -->
+              <span class="span6">
+              </span>
+              <div>
+               <span ng-bind-html-unsafe="result | fileTypeFilter"></span>
+             </div>
+             <div >
        <!--      <a ng-href="/get/{{ result | previewPath}}" target="_blank">Web Preview<span ng-bind-html-unsafe="result.fields.file_meta.path | autocompleteHighlight:query"></span> </a>
 
        <a ng-href="/get/{{ result | downloadPath}}" target="_blank">Download<span ng-bind-html-unsafe="result.fields.file_meta.path | autocompleteHighlight:query"></span> </a> -->

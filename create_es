@@ -24,21 +24,22 @@ curl -XPOST 'http://localhost:9200/ubid/item' -d '{
 }'
 
 curl -XPOST 'http://localhost:9200/ubid/item' -d '{
-	"title": "Couch",
-	"desc": "Couch",
-	"locationArea": "University of California",
-	"type": "furniture",
-	"image_url":"https://www.postdoc.ucla.edu/files/couch.JPG"
-}'
-
-
-curl -XPOST 'http://localhost:9200/ubid/item' -d '{
 	"title": "Cup",
 	"desc": "Hard plastic, new",
 	"locationArea": "University of Hong Kong",
 	"type": "furniture",
 	"image_url":"https://www.jupyeah.com/uploads/items/18532/20131019214500.jpg"
 }'
+
+curl -XPOST 'http://localhost:9200/ubid/item' -d '{
+	"title": "Couch",
+	"desc": "2 years ago",
+	"locationArea": "University of Hong Kong",
+	"type": "furniture",
+	"image_url":"http://homeimprovementbasics.com/wp-content/uploads/2013/09/couchget-off-the-couch-fatty-bollywood4ever-1edkknzi.jpg"
+}'
+
+
 
 curl -XPOST 'http://localhost:9200/ubid/item' -d '{
 	"title": "Suitcase",
@@ -51,7 +52,7 @@ curl -XPOST 'http://localhost:9200/ubid/item' -d '{
 curl -XPUT 'http://localhost:9200/ubid/item/_mapping' -d '{ "items": {
 		"_source": {
 			"enabled": true
-		},
+		},`
 		"properties": {
 			"title": {
 				"type": "string"

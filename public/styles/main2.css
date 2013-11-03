@@ -109,6 +109,14 @@ body {
     text-align:center;
 }
 
+
+.item-image{
+    height:10%;
+    width:auto;
+    /*height:auto;*/
+    /*weight:600px;*/
+}
+
 h1, h2{
     text-shadow: rgba(0, 0, 0, 0.498039) 0px 2px 2px;
     text-align:center;
@@ -138,4 +146,5 @@ h1, h2{
     width: 5%;
     height: auto;
 }
+
 

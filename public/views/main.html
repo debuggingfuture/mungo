@@ -18,7 +18,6 @@
       <div   class="span12">
         <div ng-init="getSearchResultFacet()" >
           <span  ><span ng-show="onTypeFilter" class="badge badge-important">Filter ON : {{typeFilter}}</span></span>
-
           <div>Popular Type:</div>
           <div style="height:100px">
             <fs-bar bind="facetResultFacet" duration='700' align='left' height='100' width='500' on-click="filterSearchByType" />
@@ -38,14 +37,9 @@
               <div class="span12 image-meta" style="height:64px;">
                 <div>{{result.fields.title}}</div>
                 <!-- 64 for image height -->
-                <span class="span2">
+                <span class="span6">
                   <img ng-src="{{getImage(result).image_url}}">
                 </span>
-                <ul class="span5">
-                  <li   ng-show="getImage(result).exif.image_height"><em>Image Height:</em>{{getImage(result).exif.image_height}}</li>
-                  <li  ng-show="getImage(result).exif.image_width"><em>Image Width:</em>{{getImage(result).exif.image_width}}</li>
-                  <li  ng-show="getImage(result).exif.creation_date"><em>Create Date:</em>{{getImage(result).exif.creation_date}}</li>
-                </ul>
             <div>
              <span ng-bind-html-unsafe="result | fileTypeFilter"></span>
            </div>

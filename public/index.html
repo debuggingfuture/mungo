@@ -13,7 +13,7 @@
 
   <!-- build:css({.tmp,app}) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/main2.css">
+  <link rel="stylesheet" href="styles/main2.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <!-- endbuild -->
 <!--[if IE 7]>
@@ -25,34 +25,42 @@
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="navbar-container container-fluids">
-        <span class="brand">          FIT <span class="label ">beta</span>
-        </span>
+        <span class="brand">Mungo<span class="label ">beta</span>
+      </span>
 
-        <ul class="nav">
-          <li id="menu-home" class="active"><a href="home">Home</a></li>
-        </ul>
-      </div>
+      <ul class="nav">
+        <li id="menu-home" class="active"><a href="home">Home</a></li>
+      </ul>
+      <ul class="nav">
+        <li id="menu-home" ><a href="home">Buy</a></li>
+      </ul>
+      <ul class="nav">
+        <li id="menu-home" ><a href="home">Sell</a></li>
+      </ul>
+    </div>
 
-      <ul  id="loginDropdownGroup" class="pull-right  nav nav-pills">
-        <li id="loginDropdownList" class="dropdown">
-          <a id="loginDropdownButton" class="dropdown-toggle"
-          data-toggle="dropdown"
-          href="#">
-          Sign Up / Login
-          <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-large">
 
-                <li> <a id="authDropbox" href="#"><i class="icon-dropbox cloudService"></i></a> </li>
-
+    <ul  id="loginDropdownGroup" class="pull-right  nav nav-pills">
+      <li id="loginDropdownList" class="dropdown avatar-container">
+<!--           <img class="avatar dropdown-toggle" src="https://pbs.twimg.com/profile_images/3615546174/0fb11d27edef354e9c6712858b1db94e_normal.png" alt="avatar" /> -->
+        <a id="loginDropdownButton" class="dropdown-toggle"
+        data-toggle="dropdown"
+        href="#">
+        Ben
+        <b class="caret"></b>
+      </a>
+    </li>
+    <ul class="dropdown-menu dropdown-menu-large">
+      <!-- <li> <a id="authDropbox" href="#"><i class="icon-dropbox cloudService"></i></a> </li> -->
+      <li><a id="authFacebook" class="btn btn-primary connect-facebook">Connect With Facebook</a></li>
                   <!-- <a href="/oauth/dropbox" class="btn btn-primary connect-dropbox"><img src="/images/glyphicons_381_dropbox.png" />Connect With Dropbox</a></div></li>
- -->
-        </ul>
-      </li>
-    </ul>
+                -->
+              </ul>
+            </li>
+          </ul>
 
 
-    <!-- <img src="images/glyphicons_391_evernote.png" /> -->
+          <!-- <img src="images/glyphicons_391_evernote.png" /> -->
       <!--  <form class="navbar-search pull-right">
           <input type="text" class="search-query" placeholder="Search">
         </form> -->
@@ -86,7 +94,7 @@
       <script src="bower_components/jquery/jquery.js"></script>
       <!-- endbuild -->
       <!-- Manual Injected -->
-     <script src="http://localhost:35730/livereload.js?snipver=1" type="text/javascript"></script>
+      <script src="http://localhost:35730/livereload.js?snipver=1" type="text/javascript"></script>
 
 
 

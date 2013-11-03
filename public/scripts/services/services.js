@@ -6,7 +6,7 @@ define(
 
 	// return 
 
-	angular.module('myServices', ['elasticjs.services'])
+	angular.module('myServices', ['elasticjs.services','dangle'])
 
 	// .filter('autocompleteHighlight', function() {
 

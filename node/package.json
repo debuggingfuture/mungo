@@ -13,6 +13,8 @@
     "nstore":"*",
     "dropbox":"0.10.0",
     "passport-dropbox":"*",
+    "passport-facebook":"*",
+    
     "amdefine": ">=0.0.5"
   }
 }

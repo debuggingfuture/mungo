@@ -6,6 +6,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var BadRequestError = require('passport-local').BadRequestError;
 
 var DropboxStrategy = require('passport-dropbox').Strategy;
+var FacebookStrategy = require('passport-dropbox').Strategy;
 
 var app = express();
 
@@ -98,6 +99,26 @@ passport.deserializeUser(function(id, done) {
 });
 
 
+var fbUrl='http://localhost:' + app.get('port') + '/auth/facebook/callback';
+
+var FACEBOOK_APP_ID=1;
+var FACEBOOK_APP_SECRET=1;
+// passport.use(new FacebookStrategy({
+// 		consumerKey: DROPBOX_APP_KEY,
+// 	consumerSecret: DROPBOX_APP_SECRET,
+//     clientID: FACEBOOK_APP_ID,
+//     clientSecret: FACEBOOK_APP_SECRET,
+//     callbackURL: fbUrl
+//   },
+//   function(accessToken, refreshToken, profile, done) {
+//     // User.findOrCreate(..., function(err, user) {
+//     //   if (err) { return done(err); }
+//     //   done(null, user);
+//     // });
+// 	done(null,{});
+//   }
+// ));
+
 
 passport.use(new LocalStrategy(function(username, password, done) {
 	process.nextTick(function() {
@@ -145,6 +166,13 @@ app.get('/enter', function(req, res) {
 		error: req.flash('error')
 	});
 });
+app.get('/signup', function(req, res) {
+	res.render('signup', {
+		output: '123',
+		message: req.flash('info'),
+		error: req.flash('error')
+	});
+});
 
 // token 7657qwvxmvd551km
 
@@ -181,9 +209,31 @@ app.get('/auth/dropbox/callback', passport.authenticate('dropbox', {
 }), function(req, res) {
 	res.redirect('/');
 });
+
+app.get('/auth/facebook/callback',function(req, res) {
+	// res.redirect('/');
+		res.send('<script>window.close();</script>');
+});
 app.get('/auth/dropbox', passport.authenticate('dropbox'), function(req, res) {
 	// The request will be redirected to Dropbox for authentication, so this
 	// function will not be called.
+});
+
+// app.get('/auth/facebook', passport.authenticate('facebook'), function(req, res) {
+// 	// The request will be redirected to Dropbox for authentication, so this
+// 	// function will not be called.
+
+// });
+// app.get('/auth/facebook', passport.authenticate('facebook'), function(req, res) {
+// 	// The request will be redirected to Dropbox for authentication, so this
+// 	// function will not be called.
+	
+// });
+
+app.get('/auth/facebook', function(req, res) {
+	// res.redirect('/');
+		// res.send({});
+		res.redirect('/auth/facebook/callback');
 });
 
 
@@ -286,6 +336,9 @@ app.get('/get/dropbox/:path/dlurl', function(req, res) {
 // 	});
 // });
 
+app.get('/:path', function(req, res) {
+	res.redirect('/#/'+req.params.path);
+});
 
 
 http.createServer(app).listen(app.get('port'), function() {

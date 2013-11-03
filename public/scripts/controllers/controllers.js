@@ -106,27 +106,57 @@ define(
 			// 	}
 			$scope.search = function() {
 				console.log('query for ' + $scope.query);
-				var query = ejs.QueryStringQuery($scope.query);
-				var resultsCallBack = function(results) {
-					console.log('callback %o', results);
-					console.log(results.hits.hits.length);
-					if (results.hits) {
-						var hits = results.hits.hits;
-						for (var i = 0; i < hits.length; i++) {
-							var hit = hits[i];
-							// console.log(hit._source.message);
-						}
-						$scope.results = results.hits.hits;
-						console.log($scope.results);
+				// var query = ejs.QueryStringQuery($scope.query);
+				// var resultsCallBack = function(results) {
+				// 	console.log('callback %o', results);
+				// 	console.log(results.hits.hits.length);
+				// 	if (results.hits) {
+				// 		var hits = results.hits.hits;
+				// 		for (var i = 0; i < hits.length; i++) {
+				// 			var hit = hits[i];
+				// 			// console.log(hit._source.message);
+				// 		}
+				// 		$scope.results = results.hits.hits;
+				// 		console.log($scope.results);
+				// 	}
+				// }
+
+				// var r = ejs.Request()
+				// 	.indices("ubid")
+				// 	.fields(fieldsToReturn)
+				// 	.query(query);
+
+				// r.doSearch(resultsCallBack);
+				var searchResults = {
+					took: 3,
+					timed_out: false,
+					_shards: {
+						total: 5,
+						successful: 5,
+						failed: 0
+					},
+					hits: {
+						total: 4,
+						max_score: 1,
+						hits: [{
+							_index: "ubid",
+							_type: "item",
+							_id: "cZZ_rmG1S-mdNTEbGX2RAg",
+							_score: 1,
+							_source: {
+								title: "Couch",
+								desc: "2 years ago",
+								locationArea: "University of Hong Kong",
+								type: "furniture",
+								image_url: "http://homeimprovementbasics.com/wp-content/uploads/2013/09/couchget-off-the-couch-fatty-bollywood4ever-1edkknzi.jpg"
+							}
+						}]
 					}
-				}
+				};
+				$scope.results = searchResults.hits.hits;
+				$scope.results[0].fields = $scope.results[0]._source;
+				console.log($scope.results);
 
-				var r = ejs.Request()
-					.indices("ubid")
-					.fields(fieldsToReturn)
-					.query(query);
-
-				r.doSearch(resultsCallBack);
 
 			}
 

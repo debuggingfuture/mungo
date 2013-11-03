@@ -34,15 +34,13 @@
 
       <ul >
         <li  ng-repeat="result in results">
-          <div  >
+          <div >
             <!-- <i class="icon-dropbox"></i> -->
-            <img class="like" src="https://cdn2.iconfinder.com/data/icons/linecons/32/like-128.png">
             <span ng-bind-html-unsafe="result.fields.title | autocompleteHighlight:query"></span> 
             <!-- <span style="float:right" ng-bind-html-unsafe="result.fields.file_meta.isFolder | isFolderFilter"></span> -->
-
-
             <img class="item-image" ng-src="{{getImage(result).fields.image_url}}">
             <div class="span12 image-meta" style="height:64px;">
+                        <img class="like" src="https://cdn2.iconfinder.com/data/icons/linecons/32/like-128.png">
               <div>{{result.fields.title}}</div>
               <div>{{result.fields.locationArea}}</div>
               <!-- 64 for image height -->
@@ -52,6 +50,9 @@
                <span ng-bind-html-unsafe="result | fileTypeFilter"></span>
              </div>
              <div >
+
+              
+
        <!--      <a ng-href="/get/{{ result | previewPath}}" target="_blank">Web Preview<span ng-bind-html-unsafe="result.fields.file_meta.path | autocompleteHighlight:query"></span> </a>
 
        <a ng-href="/get/{{ result | downloadPath}}" target="_blank">Download<span ng-bind-html-unsafe="result.fields.file_meta.path | autocompleteHighlight:query"></span> </a> -->
